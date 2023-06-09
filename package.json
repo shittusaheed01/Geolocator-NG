@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tscinit": "tsc --init",
-    "build": "tsc --watch",
+    "tscbuild": "tsc --watch",
     "start": "node dist/index.js",
     "start-dev": "nodemon dist/index.js"
   },
