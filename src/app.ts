@@ -1,10 +1,13 @@
 import express from "express";
+import morgan from 'morgan'
 
 import usersRoute from "./routes/userRoute";
-// import localeRoute from "./routes/localeRoute";
+import localeRoute from "./routes/localeRoute";
+
 
 const app = express();
 
+app.use(morgan('dev'))
 app.use(express.json());
 
 app.get("/", (req: express.Request, res: express.Response) => {
@@ -14,7 +17,7 @@ app.get("/", (req: express.Request, res: express.Response) => {
 	});
 });
 
-// app.use('/api/v1/locale', localeRoute );
+app.use('/api/v1/locale', localeRoute );
 app.use("/api/v1/user", usersRoute);
 
 //handle unknown route error

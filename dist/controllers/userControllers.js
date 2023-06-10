@@ -8,8 +8,7 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 const uuid_1 = require("uuid");
 const getUser = async (req, res, next) => {
     const user = await userModel_1.default.find({});
-    console.log(user);
-    res.status(200).json({ message: `Success`, user });
+    res.status(200).json({ message: `Success`, results: user.length, data: { user } });
 };
 exports.getUser = getUser;
 const createUser = async (req, res, next) => {
@@ -26,7 +25,7 @@ const createUser = async (req, res, next) => {
         await newUser.save();
         res.status(201).json({
             message: `Success. Welcome ${newUser.name}`,
-            apiKey,
+            data: { apiKey },
         });
     }
     catch (error) {
@@ -49,7 +48,8 @@ const loginUser = async (req, res, next) => {
                 message: "Incorrect email or password",
             });
         }
-        res.status(200).json({ message: `Success. Welcome ${user.name}`, apiKey: user.apiKey });
+        const { apiKey } = user;
+        res.status(200).json({ message: `Success. Welcome ${user.name}`, data: { apiKey } });
     }
     catch (error) {
         next(error);

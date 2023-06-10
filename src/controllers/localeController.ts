@@ -1,3 +1,13 @@
+import { RequestHandler } from "express";
+import Locale from "../models/localeModel";
+
+export const getLocale: RequestHandler = async (req, res, next) => {
+	const locale: any = await Locale.find({});
+	res
+		.status(200)
+		.json({ message: `Success`, results: locale.length, data: { locale } });
+};
+
 //get all state
 
 //get a state by id

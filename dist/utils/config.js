@@ -31,7 +31,7 @@ const getConfig = () => {
         // NODE_ENV: process.env.NODE_ENV,
         PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
         MONGO_URI: process.env.MONGO_URI,
-        DB_NAME: process.env.DB_NAME,
+        DBNAME: process.env.DB_NAME,
         DBLOCAL: process.env.DB_LOCAL,
     };
 };

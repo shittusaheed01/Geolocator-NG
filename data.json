@@ -1,7 +1,6 @@
 [
 	{
 		"state": "Abia",
-    "region":"South East",
 		"capital": "Umuahia",
 		"slogan": "God's Own State",
 		"senatorial_districts": [
@@ -35,7 +34,7 @@
 		"latitude": "5.524913",
 		"longitude": "7.494296",
 		"website": "http://www.abiastate.gov.ng/",
-		"geo_politcal_zone": "South East",
+		"region": "South East",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -64,7 +63,6 @@
 	},
 	{
 		"state": "Adamawa",
-    "region":"North East",
 		"capital": "Yola",
 		"slogan": "Land of Beauty, Sunshine and Hospitality",
 		"senatorial_districts": [
@@ -102,7 +100,7 @@
 		"latitude": "9.2094",
 		"longitude": "12.4818",
 		"website": "http://www.adamawastate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -132,7 +130,6 @@
 	},
 	{
 		"state": "Akwa Ibom",
-    "region":"South South",
 		"capital": "Uyo",
 		"slogan": "Land of Promise",
 		"senatorial_districts": [
@@ -180,7 +177,7 @@
 		"latitude": "4.9833",
 		"longitude": "7.9167",
 		"website": "http://www.akwaibomstate.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "23 September 1987",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -199,7 +196,6 @@
 	},
 	{
 		"state": "Anambra",
-    "region":"South East",
 		"capital": "Awka",
 		"slogan": "Light of the Nation",
 		"senatorial_districts": [
@@ -244,7 +240,7 @@
 		"latitude": "6.2107",
 		"longitude": "7.0323",
 		"website": "http://www.anambrastate.gov.ng/",
-		"geo_politcal_zone": "South East",
+		"region": "South East",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -269,7 +265,6 @@
 	},
 	{
 		"state": "Bauchi",
-    "region":"North East",
 		"capital": "Bauchi",
 		"slogan": "Pearl of Tourism",
 		"senatorial_districts": [
@@ -306,7 +301,7 @@
 		"latitude": "10.3158",
 		"longitude": "9.8442",
 		"website": "http://www.bauchistate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "3 February 1976",
 		"created_by": "General Murtala Mohammed",
 		"past_governors": [
@@ -337,7 +332,6 @@
 	},
 	{
 		"state": "Benue",
-    "region":"North Central",
 		"capital": "Makurdi",
 		"slogan": "Food Basket of the Nation",
 		"senatorial_districts": [
@@ -376,7 +370,7 @@
 		"latitude": "7.7327",
 		"longitude": "8.5214",
 		"website": "http://www.benuestate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "3 February 1976",
 		"created_by": "General Murtala Mohammed",
 		"past_governors": [
@@ -408,7 +402,6 @@
 	},
 	{
 		"state": "Borno",
-    "region":"North East",
 		"capital": "Maiduguri",
 		"slogan": "Home of Peace",
 		"senatorial_districts": [
@@ -452,7 +445,7 @@
 		"latitude": "11.8333",
 		"longitude": "13.1500",
 		"website": "http://www.bornostate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "3 February 1976",
 		"created_by": "General Murtala Mohammed",
 		"past_governors": [
@@ -480,7 +473,6 @@
 	},
 	{
 		"state": "Bayelsa",
-    "region":"South South",
 		"capital": "Yenagoa",
 		"slogan": "Glory of all Lands",
 		"senatorial_districts": [
@@ -509,7 +501,7 @@
 		"latitude": "4.9267",
 		"longitude": "6.2676",
 		"website": "http://www.bayelsa.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "1 October 1996",
 		"created_by": "General Sani Abacha",
 		"past_governors": [
@@ -530,7 +522,6 @@
 	},
 	{
 		"state": "Cross River",
-    "region":"South South",
 		"capital": "Calabar",
 		"slogan": "The People's Paradise",
 		"senatorial_districts": [
@@ -567,7 +558,7 @@
 		"latitude": "5.6367",
 		"longitude": "8.3333",
 		"website": "http://www.crossriverstate.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "27 May 1967",
 		"created_by": "General Yakubu Gowon",
 		"past_governors": [
@@ -605,7 +596,6 @@
 	},
 	{
 		"state": "Delta",
-    "region":"South South",
 		"capital": "Asaba",
 		"slogan": "The Big Heart",
 		"senatorial_districts": [
@@ -667,7 +657,7 @@
 		"latitude": "5.6367",
 		"longitude": "8.3333",
 		"website": "http://www.deltastate.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -694,7 +684,6 @@
 	},
 	{
 		"state": "Ebonyi",
-    "region":"South East",
 		"capital": "Abakaliki",
 		"slogan": "Salt of the Nation",
 		"senatorial_districts": [
@@ -726,7 +715,7 @@
 		"latitude": "6.3167",
 		"longitude": "8.1000",
 		"website": "http://www.ebonyistate.gov.ng/",
-		"geo_politcal_zone": "South East",
+		"region": "South East",
 		"created_date": "1 October 1996",
 		"created_by": "General Sani Abacha",
 		"past_governors": ["Sam Egwu", "Martin Elechi", "Dave Umahi"],
@@ -740,7 +729,6 @@
 	},
 	{
 		"state": "Edo",
-    "region":"South South",
 		"capital": "Benin City",
 		"slogan": "Heartbeat of the Nation",
 		"senatorial_districts": ["Edo South", "Edo Central", "Edo North"],
@@ -782,7 +770,7 @@
 		"latitude": "6.3167",
 		"longitude": "8.1000",
 		"website": "http://www.edostate.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -801,7 +789,6 @@
 	},
 	{
 		"state": "Ekiti",
-    "region":"South West",
 		"capital": "Ado-Ekiti",
 		"slogan": "Land of Honour",
 		"senatorial_districts": [
@@ -836,7 +823,7 @@
 		"latitude": "7.6667",
 		"longitude": "5.3333",
 		"website": "http://www.ekitistate.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "1 October 1996",
 		"created_by": "General Sani Abacha",
 		"past_governors": [
@@ -859,7 +846,6 @@
 	},
 	{
 		"state": "Enugu",
-    "region":"South East",
 		"capital": "Enugu",
 		"slogan": "Coal City State",
 		"senatorial_districts": [
@@ -894,7 +880,7 @@
 		"latitude": "6.4500",
 		"longitude": "7.5000",
 		"website": "http://www.enugustate.gov.ng/",
-		"geo_politcal_zone": "South East",
+		"region": "South East",
 		"created_date": "27 August 1991",
 		"created_by": "General Ibrahim Babangida",
 		"past_governors": [
@@ -915,7 +901,6 @@
 	},
 	{
 		"state": "Federal Capital Territory",
-    "region":"North Central",
 		"capital": "Abuja",
 		"slogan": "Centre of Unity",
 		"senatorial_districts": ["Federal Capital Territory"],
@@ -934,7 +919,7 @@
 		"latitude": "9.0833",
 		"longitude": "7.5333",
 		"website": "http://www.fct.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "3 February 1976",
 		"created_by": "General Murtala Mohammed",
 		"borders": [
@@ -968,7 +953,6 @@
 	},
 	{
 		"state": "Gombe",
-    "region":"North East",
 		"capital": "Gombe",
 		"slogan": "Jewel in the Savannah",
 		"senatorial_districts": [
@@ -996,7 +980,7 @@
 		"latitude": "10.2897",
 		"longitude": "11.1711",
 		"website": "http://www.gombestate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "1 October 1996",
 		"created_by": "General Sani Abacha",
 		"borders": ["Adamawa", "Bauchi", "Borno", "Yobe", "Taraba"],
@@ -1015,7 +999,6 @@
 	},
 	{
 		"state": "Imo",
-    "region":"South East",
 		"capital": "Owerri",
 		"slogan": "Eastern Heartland",
 		"senatorial_districts": ["Imo East", "Imo North", "Imo West"],
@@ -1064,7 +1047,7 @@
 		"latitude": "5.4833",
 		"longitude": "7.0333",
 		"website": "http://www.imostate.gov.ng/",
-		"geo_politcal_zone": "South East",
+		"region": "South East",
 		"created_date": "3 February 1976",
 		"created_by": "Murtala Mohammed",
 		"borders": ["Abia", "Anambra", "Ebonyi", "Enugu", "Rivers"],
@@ -1086,7 +1069,6 @@
 	},
 	{
 		"state": "Jigawa",
-    "region":"North West",
 		"capital": "Dutse",
 		"slogan": "The New World",
 		"senatorial_districts": [
@@ -1130,7 +1112,7 @@
 		"latitude": "12.7500",
 		"longitude": "9.9667",
 		"website": "http://www.jigawastate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "27 August 1991",
 		"created_by": "Ibrahim Babangida",
 		"borders": [
@@ -1161,7 +1143,6 @@
 	},
 	{
 		"state": "Kebbi",
-    "region":"North West",
 		"capital": "Birnin Kebbi",
 		"slogan": "Land of Equity",
 		"senatorial_districts": [
@@ -1200,7 +1181,7 @@
 		"latitude": "12.4500",
 		"longitude": "4.1994",
 		"website": "http://www.kebbistate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "27 August 1991",
 		"created_by": "Ibrahim Babangida",
 		"borders": ["Niger", "Zamfara", "Katsina", "Sokoto"],
@@ -1220,7 +1201,6 @@
 	},
 	{
 		"state": "Kaduna",
-    "region":"North West",
 		"capital": "Kaduna",
 		"slogan": "Centre of Learning",
 		"senatorial_districts": [
@@ -1262,7 +1242,7 @@
 		"latitude": "10.5167",
 		"longitude": "7.4333",
 		"website": "http://www.kadunastate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "27 May 1967",
 		"created_by": "Gen. Yakubu Gowon",
 		"borders": [
@@ -1297,7 +1277,6 @@
 	},
 	{
 		"state": "Kano",
-    "region":"North West",
 		"capital": "Kano",
 		"slogan": "Centre of Commerce",
 		"senatorial_districts": [
@@ -1357,7 +1336,7 @@
 		"latitude": "11.9964",
 		"longitude": "8.5167",
 		"website": "http://www.kanostate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "27 May 1967",
 		"created_by": "Gen. Yakubu Gowon",
 		"borders": [
@@ -1388,7 +1367,6 @@
 	},
 	{
 		"state": "Kogi",
-    "region":"North Central",
 		"capital": "Lokoja",
 		"slogan": "The Confluence State",
 		"senatorial_districts": [
@@ -1429,7 +1407,7 @@
 		"latitude": "7.8000",
 		"longitude": "6.7333",
 		"website": "http://www.kogistate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "27 August 1991",
 		"created_by": "Gen. Ibrahim Babangida",
 		"borders": [
@@ -1457,7 +1435,6 @@
 	},
 	{
 		"state": "Katsina",
-    "region":"North West",
 		"capital": "Katsina",
 		"slogan": "Home of Hospitality",
 		"senatorial_districts": [
@@ -1508,7 +1485,7 @@
 		"latitude": "12.9908",
 		"longitude": "7.6000",
 		"website": "http://www.katsinastate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "23 September 1987",
 		"created_by": "Gen. Ibrahim Babangida",
 		"borders": [
@@ -1527,7 +1504,6 @@
 	},
 	{
 		"state": "Kwara",
-    "region":"North Central",
 		"capital": "Ilorin",
 		"slogan": "State of Harmony",
 		"senatorial_districts": [
@@ -1560,7 +1536,7 @@
 		"latitude": "8.5000",
 		"longitude": "4.5500",
 		"website": "http://www.kwarastate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "27 May 1967",
 		"created_by": "Gen. Yakubu Gowon",
 		"borders": [
@@ -1588,7 +1564,6 @@
 	},
 	{
 		"state": "Lagos",
-    "region":"South West",
 		"capital": "Ikeja",
 		"slogan": "Centre of Excellence",
 		"senatorial_districts": [
@@ -1626,7 +1601,7 @@
 		"latitude": "6.5244",
 		"longitude": "3.3792",
 		"website": "http://www.lagosstate.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "27 May 1967",
 		"created_by": "Gen. Yakubu Gowon",
 		"borders": ["Ogun", "Ondo"],
@@ -1645,7 +1620,6 @@
 	},
 	{
 		"state": "Nassarawa",
-    "region":"North Central",
 		"capital": "Lafia",
 		"slogan": "Home of Solid Minerals",
 		"senatorial_districts": [
@@ -1674,7 +1648,7 @@
 		"latitude": "8.5000",
 		"longitude": "8.5000",
 		"website": "http://www.nasarawastate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "1 October 1996",
 		"created_by": "Gen. Sani Abacha",
 		"borders": [
@@ -1700,7 +1674,6 @@
 	},
 	{
 		"state": "Niger",
-    "region":"North Central",
 		"capital": "Minna",
 		"slogan": "The Power State",
 		"senatorial_districts": [
@@ -1742,7 +1715,7 @@
 		"latitude": "9.6000",
 		"longitude": "6.5500",
 		"website": "http://www.nigerstate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": [
@@ -1771,7 +1744,6 @@
 	},
 	{
 		"state": "Ogun",
-    "region":"South West",
 		"capital": "Abeokuta",
 		"slogan": "Gateway State",
 		"senatorial_districts": [
@@ -1808,7 +1780,7 @@
 		"latitude": "7.1500",
 		"longitude": "3.3500",
 		"website": "http://www.ogunstate.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": ["Ondo", "Oyo", "Osun", "Ondo", "Oyo", "Osun"],
@@ -1826,7 +1798,6 @@
 	},
 	{
 		"state": "Ondo",
-    "region":"South West",
 		"capital": "Akure",
 		"slogan": "Sunshine State",
 		"senatorial_districts": [
@@ -1869,7 +1840,7 @@
 		"latitude": "7.2500",
 		"longitude": "5.2000",
 		"website": "http://www.ondostate.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": ["Ogun", "Osun", "Ekiti", "Ogun", "Osun", "Ekiti"],
@@ -1887,7 +1858,6 @@
 	},
 	{
 		"state": "Osun",
-    "region":"South West",
 		"senatorial_districts": [
 			"Osun Central",
 			"Osun East",
@@ -1934,7 +1904,7 @@
 		"latitude": "7.2500",
 		"longitude": "5.2000",
 		"website": "http://www.osun.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "27 August 1991",
 		"created_by": "Gen. Ibrahim Babangida",
 		"borders": ["Oyo", "Ekiti", "Ondo"],
@@ -1947,7 +1917,6 @@
 	},
 	{
 		"state": "Oyo",
-    "region":"South West",
 		"capital": "Ibadan",
 		"slogan": "Pace Setter",
 		"senatorial_districts": ["Oyo Central", "Oyo North", "Oyo South"],
@@ -1993,7 +1962,7 @@
 		"latitude": "7.2500",
 		"longitude": "5.2000",
 		"website": "http://www.oyostate.gov.ng/",
-		"geo_politcal_zone": "South West",
+		"region": "South West",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": ["Ogun", "Osun", "Kwara", "Ogun", "Osun", "Kwara"],
@@ -2007,7 +1976,6 @@
 	},
 	{
 		"state": "Plateau",
-    "region":"North Central",
 		"capital": "Jos",
 		"slogan": "Home of Peace and Tourism",
 		"senatorial_districts": [
@@ -2041,7 +2009,7 @@
 		"latitude": "7.2500",
 		"longitude": "5.2000",
 		"website": "http://www.plateaustate.gov.ng/",
-		"geo_politcal_zone": "North Central",
+		"region": "North Central",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": [
@@ -2064,7 +2032,6 @@
 	},
 	{
 		"state": "Rivers",
-    "region":"South South",
 		"capital": "Port Harcourt",
 		"slogan": "Treasure Base of the Nation",
 		"senatorial_districts": [
@@ -2107,7 +2074,7 @@
 		"latitude": "7.2500",
 		"longitude": "5.2000",
 		"website": "http://www.riversstate.gov.ng/",
-		"geo_politcal_zone": "South South",
+		"region": "South South",
 		"created_date": "27 May 1967",
 		"created_by": "Gen. Yakubu Gowon",
 		"borders": [
@@ -2130,7 +2097,6 @@
 	},
 	{
 		"state": "Sokoto",
-    "region":"North West",
 		"capital": "Sokoto",
 		"slogan": "Seat of the Caliphate",
 		"senatorial_districts": [
@@ -2169,7 +2135,7 @@
 		"latitude": "13.0667",
 		"longitude": "5.2333",
 		"website": "http://www.sokotostate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "3 February 1976",
 		"created_by": "Gen. Murtala Mohammed",
 		"borders": ["Kebbi", "Zamfara", "Kebbi", "Zamfara"],
@@ -2183,7 +2149,6 @@
 	},
 	{
 		"state": "Taraba",
-    "region":"North East",
 		"capital": "Jalingo",
 		"slogan": "Nature's Gift to the Nation",
 		"senatorial_districts": [
@@ -2217,7 +2182,7 @@
 		"latitude": "8.9167",
 		"longitude": "11.3667",
 		"website": "http://www.tarabastate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "27 August 1991",
 		"created_by": "Gen. Ibrahim Babangida",
 		"borders": ["Bauchi", "Gombe", "Plateau", "Cameroon"],
@@ -2231,7 +2196,6 @@
 	},
 	{
 		"state": "Yobe",
-    "region":"North East",
 		"capital": "Damaturu",
 		"slogan": "Pride of the Sahel",
 		"senatorial_districts": ["Yobe East", "Yobe North", "Yobe South"],
@@ -2262,7 +2226,7 @@
 		"latitude": "12.0000",
 		"longitude": "11.5000",
 		"website": "http://www.yobestate.gov.ng/",
-		"geo_politcal_zone": "North East",
+		"region": "North East",
 		"created_date": "27 August 1991",
 		"created_by": "Gen. Ibrahim Babangida",
 		"borders": ["Bauchi", "Borno", "Gombe", "Jigawa"],
@@ -2276,7 +2240,6 @@
 	},
 	{
 		"state": "Zamfara",
-    "region":"North West",
 		"capital": "Gusau",
 		"slogan": "Farming is Our Pride",
 		"senatorial_districts": [
@@ -2308,7 +2271,7 @@
 		"latitude": "12.1700",
 		"longitude": "6.6600",
 		"website": "http://www.zamfarastate.gov.ng/",
-		"geo_politcal_zone": "North West",
+		"region": "North West",
 		"created_date": "1 October 1996",
 		"created_by": "Gen. Sani Abacha",
 		"borders": ["Kaduna", "Katsina", "Kebbi", "Sokoto"],

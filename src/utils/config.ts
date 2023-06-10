@@ -5,7 +5,7 @@ dotenv.config();
 interface Config {
 	PORT: Number;
 	MONGO_URI: string;
-	DB_NAME: string;
+	DBNAME: string;
 	DBLOCAL: string;
 }
 
@@ -13,7 +13,7 @@ interface ENV {
   // NODE_ENV: string | undefined;
   PORT: number | undefined;
   MONGO_URI: string | undefined;
-  DB_NAME: string | undefined;
+  DBNAME: string | undefined;
   DBLOCAL: string | undefined;
 }
 
@@ -25,7 +25,7 @@ const getConfig = (): ENV => {
     // NODE_ENV: process.env.NODE_ENV,
     PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
     MONGO_URI: process.env.MONGO_URI,
-    DB_NAME: process.env.DB_NAME,
+    DBNAME: process.env.DB_NAME,
     DBLOCAL: process.env.DB_LOCAL,
   };
 };

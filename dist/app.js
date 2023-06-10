@@ -4,9 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
 const userRoute_1 = __importDefault(require("./routes/userRoute"));
-// import localeRoute from "./routes/localeRoute";
+const localeRoute_1 = __importDefault(require("./routes/localeRoute"));
 const app = (0, express_1.default)();
+app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.status(200).json({
@@ -14,7 +16,7 @@ app.get("/", (req, res) => {
         message: `Hello There! Welcome to Saheed's Geolocation app!`,
     });
 });
-// app.use('/api/v1/locale', localeRoute );
+app.use('/api/v1/locale', localeRoute_1.default);
 app.use("/api/v1/user", userRoute_1.default);
 //handle unknown route error
 app.use("*", (req, res) => {

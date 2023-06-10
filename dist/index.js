@@ -32,10 +32,10 @@ const config_1 = __importDefault(require("./utils/config"));
 const option = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: config_1.default.DB_NAME,
+    dbName: config_1.default.DBNAME,
 };
 function connectMongo(server) {
-    const uri = config_1.default.MONGO_URI;
+    const uri = config_1.default.DBLOCAL;
     mongoose.set("strictQuery", false);
     mongoose
         .connect(uri, option)

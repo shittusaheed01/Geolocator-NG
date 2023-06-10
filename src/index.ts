@@ -13,11 +13,11 @@ interface Options {
 const option: Options = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	dbName: config.DB_NAME,
+	dbName: config.DBNAME,
 };
 
 function connectMongo(server: Express.Application) {
-	const uri: string = config.MONGO_URI;
+	const uri: string = config.DBLOCAL;
 	mongoose.set("strictQuery", false);
 	mongoose
 		.connect(uri, option)

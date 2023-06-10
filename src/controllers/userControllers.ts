@@ -11,9 +11,7 @@ interface RequestBody {
 
 export const getUser: RequestHandler = async (req, res, next) => {
 	const user: any = await User.find({})
-	console.log(user)
-
-	res.status(200).json({message: `Success`, user});
+	res.status(200).json({message: `Success`,results:user.length, data:{user}});
 };
 
 export const createUser: RequestHandler = async (req, res, next) => {
@@ -33,7 +31,7 @@ export const createUser: RequestHandler = async (req, res, next) => {
 
 		res.status(201).json({
 			message: `Success. Welcome ${newUser.name}`,
-			apiKey,
+			data:{apiKey},
 		});
 	} catch (error: any) {
 		//handling mongoDB unique error
@@ -58,7 +56,8 @@ export const loginUser: RequestHandler = async (req, res, next) => {
 				message: "Incorrect email or password",
 			});
 		}
-		res.status(200).json({ message: `Success. Welcome ${user.name}`, apiKey: user.apiKey });
+		const { apiKey } = user;
+		res.status(200).json({ message: `Success. Welcome ${user.name}`, data: {apiKey} });
 	} catch (error) {
 		next(error);
 	}
