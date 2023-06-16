@@ -11,7 +11,8 @@
     "tscinit": "tsc --init",
     "tscbuild": "tsc --watch",
     "start": "node dist/index.js",
-    "start-dev": "nodemon dist/index.js"
+    "start-dev": "nodemon dist/index.js",
+    "swagger-autogen": "node dist/swagger.js"
   },
   "keywords": [],
   "author": "Saheed Shittu",
@@ -34,7 +35,10 @@
     "@types/express": "^4.17.17",
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.2.5",
+    "@types/swagger-ui-express": "^4.1.3",
     "@types/uuid": "^9.0.2",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "swagger-autogen": "^2.23.2",
+    "swagger-ui-express": "^4.6.3"
   }
 }

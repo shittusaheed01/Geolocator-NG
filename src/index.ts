@@ -17,7 +17,7 @@ const option: Options = {
 };
 
 function connectMongo(server: Express.Application) {
-	const uri: string = config.MONGO_URI;
+	const uri: string = config.DBLOCAL;
 	mongoose.set("strictQuery", false);
 	mongoose
 		.connect(uri, option)
