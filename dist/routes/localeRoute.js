@@ -4,4 +4,7 @@ const express_1 = require("express");
 const localeController_1 = require("../controllers/localeController");
 const router = (0, express_1.Router)();
 router.get('/', localeController_1.getLocale);
+router.get('/regions', localeController_1.getRegions);
+router.get('/states', localeController_1.getStates);
+router.get('/lgas', localeController_1.getLgas);
 exports.default = router;
