@@ -35,7 +35,7 @@ const option = {
     dbName: config_1.default.DBNAME,
 };
 function connectMongo(server) {
-    const uri = config_1.default.DBLOCAL;
+    const uri = config_1.default.MONGO_URI;
     mongoose.set("strictQuery", false);
     mongoose
         .connect(uri, option)
