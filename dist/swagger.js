@@ -30,9 +30,9 @@ const path = __importStar(require("path"));
 const swagger_autogen_1 = __importDefault(require("swagger-autogen"));
 const doc = {
     info: {
-        title: 'GeoLocation API',
+        title: 'Locale API',
         version: '1.0.0',
-        description: 'A nigerian geolocation api',
+        description: `With Locale's API, users can access detailed data on Nigeria's regions, states, and local government areas (LGAs). `,
         contact: {
             name: 'Saheed Shittu',
             url: 'http://localhost:5050',
