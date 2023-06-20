@@ -26,32 +26,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose = __importStar(require("mongoose"));
-const app_1 = __importDefault(require("./app"));
-const config_1 = __importDefault(require("./utils/config"));
-const option = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: config_1.default.DBNAME,
+const path = __importStar(require("path"));
+const swagger_autogen_1 = __importDefault(require("swagger-autogen"));
+const doc = {
+    info: {
+        title: 'Locale API',
+        version: '1.0.0',
+        description: `With Locale's API, users can access detailed data on Nigeria's regions, states, and local government areas (LGAs). `,
+        contact: {
+            name: 'Saheed Shittu',
+            url: 'http://localhost:5050',
+            email: 'shittusaheed01@gmail.com'
+        }
+    },
+    servers: [
+        {
+            description: 'Dev Route',
+            url: 'http://localhost:5050'
+        },
+        {
+            description: 'Production Route',
+            url: 'https://geolocatorng.onrender.com'
+        }
+    ],
+    host: 'localhost:5050',
+    schemes: ['http', 'https']
 };
-// const client = createClient({
-// 	url: `redis://${config.REDIS_USERNAME}:${config.REDIS_PASSWORD}@${config.REDIS_HOST}:${config.REDIS_PORT}`,
-// });
-// client.on("error", (err: Error) => console.log("Redis Client Error", err));
-// client.connect().then(async () => {
-// 	console.log("connected");
-// 	client.set("key", "gbogbovlue ni");
-// 	const value = await client.get("key");
-// 	console.log(value);
-// });
-function connectMongo(server) {
-    const uri = config_1.default.DBLOCAL;
-    mongoose.set("strictQuery", false);
-    mongoose
-        .connect(uri, option)
-        .then(() => server.listen(config_1.default.PORT, () => {
-        console.log(`Server and MongoDB are listening on port ${config_1.default.PORT}`);
-    }))
-        .catch((err) => console.log(err));
-}
-connectMongo(app_1.default);
+const options = {
+    openapi: '3.0.0',
+};
+const firstEndpoint = path.join(__dirname, './app.js');
+const secondEndpoint = path.join(__dirname, './routes/*.js');
+const outputFile = path.join(__dirname, './swagger-output.json');
+const endpointFiles = [firstEndpoint, secondEndpoint];
+(0, swagger_autogen_1.default)(options)(outputFile, endpointFiles, doc);
