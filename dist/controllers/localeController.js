@@ -11,22 +11,31 @@ const config_1 = __importDefault(require("../utils/config"));
 const client = (0, redis_1.createClient)({
     url: `redis://${config_1.default.REDIS_USERNAME}:${config_1.default.REDIS_PASSWORD}@${config_1.default.REDIS_HOST}:${config_1.default.REDIS_PORT}/#11723373`,
 });
-client.on("error", (err) => console.log("Redis Client Error", err));
 client.connect().then(async () => {
     console.log("Redis connected");
+});
+client.on("error", (err) => {
+    console.log("Redis Client Error", err);
+    throw err;
 });
 //Cache middleware
 const cache = async (req, res, next) => {
     // const { username } = req.params;
     // console.log(req.route.path)
-    const value = await client.get(req.route.path);
+    let value;
+    //checks if the route is the root route or a predefined route
+    if (req.route.path.length >= 1) {
+        value = "";
+        console.log("from locale db");
+    }
+    else {
+        value = await client.get(req.route.path);
+    }
     if (value !== null) {
         const data = JSON.parse(value);
-        console.log("from cache");
         return res.status(200).json(data);
     }
     else {
-        console.log("from db");
         next();
     }
 };

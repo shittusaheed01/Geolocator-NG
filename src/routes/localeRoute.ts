@@ -1,7 +1,12 @@
 import {Router} from 'express';
 
 import {cache, getLgas, getLocale, getRegions, getStates} from '../controllers/localeController';
+
+import {verifyToken} from '../utils/apiKeyValidation';
+
 const router = Router();
+
+router.use(verifyToken);
 
 router.get('/', cache, getLocale);
 router.get('/regions', cache, getRegions);
