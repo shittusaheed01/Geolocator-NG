@@ -7,6 +7,10 @@ interface Config {
 	MONGO_URI: string;
 	DBNAME: string;
 	DBLOCAL: string;
+  REDIS_PASSWORD: string;
+  REDIS_HOST: string;
+  REDIS_PORT: number;
+  REDIS_USERNAME: string;
 }
 
 interface ENV {
@@ -15,6 +19,10 @@ interface ENV {
   MONGO_URI: string | undefined;
   DBNAME: string | undefined;
   DBLOCAL: string | undefined;
+  REDIS_PASSWORD: string | undefined;
+  REDIS_HOST: string | undefined;
+  REDIS_PORT: number | undefined;
+  REDIS_USERNAME: string | undefined;
 }
 
 
@@ -22,11 +30,14 @@ interface ENV {
 
 const getConfig = (): ENV => {
   return {
-    // NODE_ENV: process.env.NODE_ENV,
     PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
     MONGO_URI: process.env.MONGO_URI,
     DBNAME: process.env.DB_NAME,
     DBLOCAL: process.env.DB_LOCAL,
+    REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+    REDIS_HOST: process.env.REDIS_HOST,
+    REDIS_PORT: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : undefined,
+    REDIS_USERNAME: process.env.REDIS_USERNAME,
   };
 };
 

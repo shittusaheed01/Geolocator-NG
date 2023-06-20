@@ -34,7 +34,6 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const userRoute_1 = __importDefault(require("./routes/userRoute"));
 const localeRoute_1 = __importDefault(require("./routes/localeRoute"));
 const app = (0, express_1.default)();
-console.log(path.join(__dirname, './swagger-output.json'));
 //Swagger Documentation
 const newSwag = JSON.parse(fs.readFileSync(path.join(__dirname, './swagger-output.json'), 'utf8'));
 app.use((0, morgan_1.default)('dev'));

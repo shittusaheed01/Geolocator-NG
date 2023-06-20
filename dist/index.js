@@ -26,14 +26,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
 const mongoose = __importStar(require("mongoose"));
+const app_1 = __importDefault(require("./app"));
 const config_1 = __importDefault(require("./utils/config"));
 const option = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: config_1.default.DBNAME,
 };
+// const client = createClient({
+// 	url: `redis://${config.REDIS_USERNAME}:${config.REDIS_PASSWORD}@${config.REDIS_HOST}:${config.REDIS_PORT}`,
+// });
+// client.on("error", (err: Error) => console.log("Redis Client Error", err));
+// client.connect().then(async () => {
+// 	console.log("connected");
+// 	client.set("key", "gbogbovlue ni");
+// 	const value = await client.get("key");
+// 	console.log(value);
+// });
 function connectMongo(server) {
     const uri = config_1.default.DBLOCAL;
     mongoose.set("strictQuery", false);

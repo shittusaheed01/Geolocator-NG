@@ -3,8 +3,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLgas = exports.getStates = exports.getRegions = exports.getLocale = void 0;
+exports.getLgas = exports.getStates = exports.getRegions = exports.getLocale = exports.cache = void 0;
 const localeModel_1 = __importDefault(require("../models/localeModel"));
+const redis_1 = require("redis");
+const config_1 = __importDefault(require("../utils/config"));
+// const client = createClient({});
+const client = (0, redis_1.createClient)({
+    url: `redis://${config_1.default.REDIS_USERNAME}:${config_1.default.REDIS_PASSWORD}@${config_1.default.REDIS_HOST}:${config_1.default.REDIS_PORT}/#11723373`,
+});
+client.on("error", (err) => console.log("Redis Client Error", err));
+client.connect().then(async () => {
+    console.log("Redis connected");
+});
+//Cache middleware
+const cache = async (req, res, next) => {
+    // const { username } = req.params;
+    // console.log(req.route.path)
+    const value = await client.get(req.route.path);
+    if (value !== null) {
+        const data = JSON.parse(value);
+        console.log("from cache");
+        return res.status(200).json(data);
+    }
+    else {
+        console.log("from db");
+        next();
+    }
+};
+exports.cache = cache;
 const getLocale = async (req, res, next) => {
     const { state, region, page = 0, statesPerPage = 10 } = req.query;
     const findQuery = {};
@@ -26,10 +52,8 @@ const getLocale = async (req, res, next) => {
             .skip(Number(page) * Number(statesPerPage))
             .limit(Number(statesPerPage));
     }
-    // console.log(noOfLgas)
-    res
-        .status(200)
-        .json({ message: `Success`, results: locale.length, data: { locale } });
+    const resp = { message: `Success`, results: locale.length, data: { locale } };
+    res.status(200).json(resp);
 };
 exports.getLocale = getLocale;
 const getRegions = async (req, res, next) => {
@@ -43,11 +67,14 @@ const getRegions = async (req, res, next) => {
         },
     ]);
     const regions = regionsAndData.map((locale) => locale._id).sort();
-    res.status(200).json({
+    const resp = {
         message: `Success`,
         results: regionsAndData.length,
         data: { regions, regionsAndData },
-    }); //data: { regionsAndData },
+    };
+    //Send to Redis
+    client.set("/regions", JSON.stringify(resp));
+    res.status(200).json(resp);
 };
 exports.getRegions = getRegions;
 const getStates = async (req, res, next) => {
@@ -55,17 +82,19 @@ const getStates = async (req, res, next) => {
         { $group: { _id: "$state", lgas: { $push: "$lgas" } } },
     ]);
     const states = statesAndData.map((locale) => locale._id).sort();
-    res.status(200).json({
+    const resp = {
         message: `Success`,
         results: statesAndData.length,
         data: { states, statesAndData },
-    });
+    };
+    //Send to Redis
+    client.set("/states", JSON.stringify(resp));
+    res.status(200).json(resp);
 };
 exports.getStates = getStates;
 const getLgas = async (req, res, next) => {
     const { page = 0, statesPerPage = 20 } = req.query;
-    const lgaData = await localeModel_1.default.find({})
-        .select("+lgas");
+    const lgaData = await localeModel_1.default.find({}).select("+lgas");
     const lgaArray = lgaData.map((lga) => lga.lgas);
     const localGovts = lgaArray.flat().sort();
     // Calculate the starting and ending indices of the current page
@@ -73,10 +102,13 @@ const getLgas = async (req, res, next) => {
     const endIndex = +startIndex + +statesPerPage;
     // Get the paginated results using the slice() method
     const paginatedData = localGovts.slice(startIndex, endIndex);
-    res.status(200).json({
+    const resp = {
         message: `Success`,
         results: paginatedData.length,
         data: { localGovts: paginatedData },
-    });
+    };
+    //Send to Redis
+    client.set("/lgas", JSON.stringify(resp));
+    res.status(200).json(resp);
 };
 exports.getLgas = getLgas;

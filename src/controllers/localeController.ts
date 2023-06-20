@@ -1,5 +1,36 @@
 import { RequestHandler } from "express";
 import Locale from "../models/localeModel";
+import { createClient } from "redis";
+import config from "../utils/config";
+
+// const client = createClient({});
+
+const client = createClient({
+	url: `redis://${config.REDIS_USERNAME}:${config.REDIS_PASSWORD}@${config.REDIS_HOST}:${config.REDIS_PORT}/#11723373`,
+});
+
+client.on("error", (err: Error) => console.log("Redis Client Error", err));
+
+client.connect().then(async () => {
+	console.log("Redis connected");
+});
+
+//Cache middleware
+export const cache: RequestHandler = async (req, res, next) => {
+	// const { username } = req.params;
+	// console.log(req.route.path)
+
+	const value = await client.get(req.route.path);
+
+	if (value !== null) {
+		const data = JSON.parse(value);
+		console.log("from cache");
+		return res.status(200).json(data);
+	} else {
+		console.log("from db");
+		next();
+	}
+};
 
 export const getLocale: RequestHandler = async (req, res, next) => {
 	const { state, region, page = 0, statesPerPage = 10 } = req.query;
@@ -28,14 +59,11 @@ export const getLocale: RequestHandler = async (req, res, next) => {
 			.limit(Number(statesPerPage));
 	}
 
-	// console.log(noOfLgas)
-	res
-		.status(200)
-		.json({ message: `Success`, results: locale.length, data: { locale } });
+	const resp = { message: `Success`, results: locale.length, data: { locale } };
+	res.status(200).json(resp);
 };
 
 export const getRegions: RequestHandler = async (req, res, next) => {
-
 	const regionsAndData = await Locale.aggregate([
 		{
 			$group: {
@@ -48,11 +76,15 @@ export const getRegions: RequestHandler = async (req, res, next) => {
 
 	const regions: string[] = regionsAndData.map((locale) => locale._id).sort();
 
-	res.status(200).json({
+	const resp = {
 		message: `Success`,
 		results: regionsAndData.length as Number,
-		data:{regions, regionsAndData},
-	});  //data: { regionsAndData },
+		data: { regions, regionsAndData },
+	};
+	//Send to Redis
+	client.set("/regions", JSON.stringify(resp));
+
+	res.status(200).json(resp);
 };
 
 export const getStates: RequestHandler = async (req, res, next) => {
@@ -62,33 +94,39 @@ export const getStates: RequestHandler = async (req, res, next) => {
 
 	const states: string[] = statesAndData.map((locale) => locale._id).sort();
 
-	res.status(200).json({
+	const resp = {
 		message: `Success`,
 		results: statesAndData.length as Number,
 		data: { states, statesAndData },
-	});
+	};
+	//Send to Redis
+	client.set("/states", JSON.stringify(resp));
+
+	res.status(200).json(resp);
 };
 
 export const getLgas: RequestHandler = async (req, res, next) => {
 	const { page = 0, statesPerPage = 20 } = req.query;
 
-	const lgaData = await Locale.find({})
-		.select("+lgas")
+	const lgaData = await Locale.find({}).select("+lgas");
 
 	const lgaArray: string[][] = lgaData.map((lga) => lga.lgas);
 	const localGovts: string[] = lgaArray.flat().sort();
 
-	
 	// Calculate the starting and ending indices of the current page
 	const startIndex: number = +page * +statesPerPage;
 	const endIndex: number = +startIndex + +statesPerPage;
-	
+
 	// Get the paginated results using the slice() method
 	const paginatedData = localGovts.slice(startIndex, endIndex);
 
-	res.status(200).json({
+	const resp = {
 		message: `Success`,
 		results: paginatedData.length as Number,
 		data: { localGovts: paginatedData },
-	});
+	};
+	//Send to Redis
+	client.set("/lgas", JSON.stringify(resp));
+
+	res.status(200).json(resp);
 };

@@ -11,8 +11,6 @@ import localeRoute from "./routes/localeRoute";
 
 const app = express();
 
-console.log(path.join(__dirname, './swagger-output.json'))
-
 //Swagger Documentation
 const newSwag = JSON.parse(fs.readFileSync(path.join(__dirname, './swagger-output.json'), 'utf8'));
 
