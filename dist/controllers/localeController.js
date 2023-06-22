@@ -111,12 +111,15 @@ const getStates = async (req, res, next) => {
 };
 exports.getStates = getStates;
 const getLgas = async (req, res, next) => {
-    const { page = 0, lgasPerPage = 20 } = req.query;
+    const { page = 1, lgasPerPage = 20 } = req.query;
+    if (+page < 1) {
+        return next({ status: 400, message: `Invalid page number` });
+    }
     const lgaData = await localeModel_1.default.find({}).select("+lgas");
     const lgaArray = lgaData.map((lga) => lga.lgas);
     const localGovts = lgaArray.flat().sort();
     // Calculate the starting and ending indices of the current page
-    const startIndex = +page * +lgasPerPage;
+    const startIndex = (+page - 1) * +lgasPerPage;
     const endIndex = +startIndex + +lgasPerPage;
     // Get the paginated results using the slice() method
     const paginatedData = localGovts.slice(startIndex, endIndex);
