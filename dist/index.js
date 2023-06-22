@@ -34,18 +34,8 @@ const option = {
     useUnifiedTopology: true,
     dbName: config_1.default.DBNAME,
 };
-// const client = createClient({
-// 	url: `redis://${config.REDIS_USERNAME}:${config.REDIS_PASSWORD}@${config.REDIS_HOST}:${config.REDIS_PORT}`,
-// });
-// client.on("error", (err: Error) => console.log("Redis Client Error", err));
-// client.connect().then(async () => {
-// 	console.log("connected");
-// 	client.set("key", "gbogbovlue ni");
-// 	const value = await client.get("key");
-// 	console.log(value);
-// });
 function connectMongo(server) {
-    const uri = config_1.default.DBLOCAL;
+    const uri = config_1.default.MONGO_URI;
     mongoose.set("strictQuery", false);
     mongoose
         .connect(uri, option)
