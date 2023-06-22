@@ -1,8 +1,6 @@
 "use strict";
 const request = require("supertest");
 const app = require("../app");
-// console.log(app)
-// const app = require('express')();
 let serverApp = app.default.listen(4000);
 afterAll((done) => {
     serverApp.close();

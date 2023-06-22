@@ -56,7 +56,7 @@ it("should login a user", async () => {
         email: "ademola@gmail.com",
         password: "qwerty",
     });
-    // expect(response.status).toBe(200);
+    expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("message");
     expect(response.body).toHaveProperty("data");
     expect(response.body.message).toBe("Success. Welcome Ademola Adekunle");
