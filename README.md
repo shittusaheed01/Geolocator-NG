@@ -28,7 +28,7 @@ Locale is a powerful developer tool designed to provide comprehensive geographic
 
 ### To start using LocaleAPI in your projects, follow these steps:
 
-1. Review API Documentation: Visit our website at [Locale](https://geolocatorng.onrender.com/api/v1/docs) and review the API documentation. The documentation provides detailed information about the available endpoints, request parameters, and response formats.
+1. Review API Documentation: Visit our website at [Postman Doc](https://documenter.getpostman.com/view/14148992/2s93z5A59G) or [Swagger Doc](https://geolocatorng.onrender.com/api-docs) and review the API documentation. The documentation provides detailed information about the available endpoints, request parameters, and response formats.
 
 1. Sign up for an API Key: Visit our website at [register here](https://geolocatorng.onrender.com/api/v1/user/signup) and sign up for an API key. The API key will be necessary to authenticate your requests and access Locale's geographical data.
 
