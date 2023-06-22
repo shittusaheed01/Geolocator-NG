@@ -20,18 +20,18 @@ client.on("error", (err) => {
 });
 //Cache middleware
 const cache = async (req, res, next) => {
-    // const { username } = req.params;
-    // console.log(req.route.path)
     let value;
     //checks if the route is the root route or a predefined route
-    if (req.route.path.length >= 1) {
-        value = "";
-        console.log("from locale db");
-    }
-    else {
+    if (req.route.path.length > 1) {
         value = await client.get(req.route.path);
     }
-    if (value !== null) {
+    else if (req.query.state) {
+        value = await client.get(req.query.state);
+    }
+    else {
+        return next();
+    }
+    if (value) {
         const data = JSON.parse(value);
         return res.status(200).json(data);
     }
@@ -41,7 +41,7 @@ const cache = async (req, res, next) => {
 };
 exports.cache = cache;
 const getLocale = async (req, res, next) => {
-    const { state, region, page = 0, statesPerPage = 10 } = req.query;
+    const { state, region, page = 1, statesPerPage = 10 } = req.query;
     const findQuery = {};
     if (state) {
         findQuery.state = { $regex: state, $options: "i" };
@@ -49,19 +49,28 @@ const getLocale = async (req, res, next) => {
     if (region) {
         findQuery.region = { $regex: region, $options: "i" };
     }
+    if (+page < 1) {
+        return next({ status: 400, message: `Invalid page number` });
+    }
     let locale;
     if (findQuery.state) {
         locale = await localeModel_1.default.find(findQuery)
             .select("+lgas +senatorial_districts +past_governors +borders +known_for")
-            .skip(Number(page) * Number(statesPerPage))
+            .skip((Number(page) - 1) * Number(statesPerPage))
             .limit(Number(statesPerPage));
     }
     else {
         locale = await localeModel_1.default.find(findQuery)
-            .skip(Number(page) * Number(statesPerPage))
+            .skip((Number(page) - 1) * Number(statesPerPage))
             .limit(Number(statesPerPage));
     }
+    if (locale.length === 0) {
+        return next({ status: 404, message: `No result found` });
+    }
     const resp = { message: `Success`, results: locale.length, data: { locale } };
+    if (state) {
+        client.set(state, JSON.stringify(resp));
+    }
     res.status(200).json(resp);
 };
 exports.getLocale = getLocale;
@@ -102,22 +111,23 @@ const getStates = async (req, res, next) => {
 };
 exports.getStates = getStates;
 const getLgas = async (req, res, next) => {
-    const { page = 0, statesPerPage = 20 } = req.query;
+    const { page = 0, lgasPerPage = 20 } = req.query;
     const lgaData = await localeModel_1.default.find({}).select("+lgas");
     const lgaArray = lgaData.map((lga) => lga.lgas);
     const localGovts = lgaArray.flat().sort();
     // Calculate the starting and ending indices of the current page
-    const startIndex = +page * +statesPerPage;
-    const endIndex = +startIndex + +statesPerPage;
+    const startIndex = +page * +lgasPerPage;
+    const endIndex = +startIndex + +lgasPerPage;
     // Get the paginated results using the slice() method
     const paginatedData = localGovts.slice(startIndex, endIndex);
+    if (paginatedData.length === 0) {
+        return next({ status: 404, message: `No result found` });
+    }
     const resp = {
         message: `Success`,
         results: paginatedData.length,
         data: { localGovts: paginatedData },
     };
-    //Send to Redis
-    client.set("/lgas", JSON.stringify(resp));
     res.status(200).json(resp);
 };
 exports.getLgas = getLgas;
