@@ -1,6 +1,8 @@
 import {Router} from 'express';
 
-import {cache, getLgas, getLocale, getRegions, getStates} from '../controllers/localeController';
+import {getLgas, getLocale, getRegions, getStates} from '../controllers/localeController';
+
+import {cache} from '../utils/cacheMiddleware'
 
 import {verifyToken} from '../utils/apiKeyValidation';
 

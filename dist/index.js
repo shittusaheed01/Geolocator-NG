@@ -29,6 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = __importStar(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 const config_1 = __importDefault(require("./utils/config"));
+const cacheMiddleware_1 = require("./utils/cacheMiddleware");
 const option = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -39,9 +40,18 @@ function connectMongo(server) {
     mongoose.set("strictQuery", false);
     mongoose
         .connect(uri, option)
-        .then(() => server.listen(config_1.default.PORT, () => {
-        console.log(`Server and MongoDB are listening on port ${config_1.default.PORT}`);
-    }))
+        .then(() => {
+        cacheMiddleware_1.client.connect().then(async () => {
+            console.log("Redis connected");
+        });
+        cacheMiddleware_1.client.on("error", (err) => {
+            console.log("Redis Client Error", err);
+            throw err;
+        });
+        server.listen(config_1.default.PORT, () => {
+            console.log(`Server and MongoDB are listening on port ${config_1.default.PORT}`);
+        });
+    })
         .catch((err) => console.log(err));
 }
 connectMongo(app_1.default);

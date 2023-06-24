@@ -3,6 +3,7 @@ import * as mongoose from "mongoose";
 
 import app from "./app";
 import config from "./utils/config";
+import {client} from './utils/cacheMiddleware'
 
 interface Options {
 	useNewUrlParser: boolean;
@@ -17,16 +18,25 @@ const option: Options = {
 };
 
 
-
 function connectMongo(server: Express.Application) {
 	const uri: string = config.MONGO_URI;
 	mongoose.set("strictQuery", false);
 	mongoose
 		.connect(uri, option)
-		.then(() =>
+		.then(() =>{
+			client.connect().then(async () => {
+				console.log("Redis connected");
+			});
+			
+			client.on("error", (err: Error) => {
+				console.log("Redis Client Error", err);
+				throw err;
+			});
 			server.listen(config.PORT, () => {
 				console.log(`Server and MongoDB are listening on port ${config.PORT}`);
 			})
+		}
+			
 		)
 		.catch((err: any) => console.log(err));
 }

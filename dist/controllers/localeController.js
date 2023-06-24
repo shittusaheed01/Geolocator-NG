@@ -3,43 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLgas = exports.getStates = exports.getRegions = exports.getLocale = exports.cache = void 0;
+exports.getLgas = exports.getStates = exports.getRegions = exports.getLocale = void 0;
 const localeModel_1 = __importDefault(require("../models/localeModel"));
-const redis_1 = require("redis");
-const config_1 = __importDefault(require("../utils/config"));
-// const client = createClient({});
-const client = (0, redis_1.createClient)({
-    url: `redis://${config_1.default.REDIS_USERNAME}:${config_1.default.REDIS_PASSWORD}@${config_1.default.REDIS_HOST}:${config_1.default.REDIS_PORT}/#11723373`,
-});
-client.connect().then(async () => {
-    console.log("Redis connected");
-});
-client.on("error", (err) => {
-    console.log("Redis Client Error", err);
-    throw err;
-});
-//Cache middleware
-const cache = async (req, res, next) => {
-    let value;
-    //checks if the route is the root route or a predefined route
-    if (req.route.path.length > 1) {
-        value = await client.get(req.route.path);
-    }
-    else if (req.query.state) {
-        value = await client.get(req.query.state);
-    }
-    else {
-        return next();
-    }
-    if (value) {
-        const data = JSON.parse(value);
-        return res.status(200).json(data);
-    }
-    else {
-        next();
-    }
-};
-exports.cache = cache;
+const cacheMiddleware_1 = require("../utils/cacheMiddleware");
 const getLocale = async (req, res, next) => {
     const { state, region, page = 1, statesPerPage = 10 } = req.query;
     const findQuery = {};
@@ -69,7 +35,7 @@ const getLocale = async (req, res, next) => {
     }
     const resp = { message: `Success`, results: locale.length, data: { locale } };
     if (state) {
-        client.set(state, JSON.stringify(resp));
+        cacheMiddleware_1.client.set(state, JSON.stringify(resp));
     }
     res.status(200).json(resp);
 };
@@ -91,7 +57,7 @@ const getRegions = async (req, res, next) => {
         data: { regions, regionsAndData },
     };
     //Send to Redis
-    client.set("/regions", JSON.stringify(resp));
+    cacheMiddleware_1.client.set("/regions", JSON.stringify(resp));
     res.status(200).json(resp);
 };
 exports.getRegions = getRegions;
@@ -106,7 +72,7 @@ const getStates = async (req, res, next) => {
         data: { states, statesAndData },
     };
     //Send to Redis
-    client.set("/states", JSON.stringify(resp));
+    cacheMiddleware_1.client.set("/states", JSON.stringify(resp));
     res.status(200).json(resp);
 };
 exports.getStates = getStates;
