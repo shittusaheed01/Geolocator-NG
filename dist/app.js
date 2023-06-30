@@ -30,13 +30,22 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
+const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const userRoute_1 = __importDefault(require("./routes/userRoute"));
 const localeRoute_1 = __importDefault(require("./routes/localeRoute"));
 const app = (0, express_1.default)();
 //Swagger Documentation
-const newSwag = JSON.parse(fs.readFileSync(path.join(__dirname, './swagger-output.json'), 'utf8'));
-app.use((0, morgan_1.default)('dev'));
+const newSwag = JSON.parse(fs.readFileSync(path.join(__dirname, "./swagger-output.json"), "utf8"));
+const limiter = (0, express_rate_limit_1.default)({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+    standardHeaders: true,
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+// Apply the rate limiting middleware to all requests
+app.use(limiter);
+app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.status(200).json({
@@ -44,9 +53,9 @@ app.get("/", (req, res) => {
         message: `Hello There! Welcome to Saheed's Geolocation app!`,
     });
 });
-app.use('/api/v1/locale', localeRoute_1.default);
+app.use("/api/v1/locale", localeRoute_1.default);
 app.use("/api/v1/user", userRoute_1.default);
-app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(newSwag));
+app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(newSwag));
 //handle unknown route error
 app.use("*", (req, res) => {
     res.status(404).json({
